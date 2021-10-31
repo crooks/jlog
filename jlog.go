@@ -8,16 +8,12 @@ import (
 )
 
 type Logger struct {
-	logger jlogger
-	Level  int
+	Level int
 }
-
-type jlogger struct{}
 
 func New() *Logger {
 	return &Logger{
-		logger: jlogger{},
-		Level:  log.InfoLevel,
+		Level: log.InfoLevel,
 	}
 }
 
