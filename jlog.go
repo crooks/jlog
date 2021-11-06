@@ -46,7 +46,7 @@ func (l Logger) Debug(msg ...interface{}) {
 }
 
 func (l Logger) Debugf(template string, args ...interface{}) {
-	if l.Level <= log.TraceLevel {
+	if l.Level <= log.DebugLevel {
 		journal.Print(journal.PriDebug, template, args...)
 	}
 }
