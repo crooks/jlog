@@ -11,9 +11,9 @@ type Logger struct {
 	Level int
 }
 
-func New() *Logger {
+func NewJournal(level int) *Logger {
 	return &Logger{
-		Level: log.InfoLevel,
+		Level: level,
 	}
 }
 
