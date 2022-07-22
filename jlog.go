@@ -2,6 +2,7 @@ package jlog
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Masterminds/log-go"
 	"github.com/coreos/go-systemd/journal"
@@ -113,35 +114,43 @@ func (l Logger) Errorw(msg string, fields log.Fields) {
 func (l Logger) Fatal(msg ...interface{}) {
 	if l.Level <= log.FatalLevel {
 		journal.Print(journal.PriEmerg, fmt.Sprintf("%v", msg...))
+		os.Exit(1)
 	}
 }
 
 func (l Logger) Fatalf(template string, args ...interface{}) {
 	if l.Level <= log.FatalLevel {
 		journal.Print(journal.PriEmerg, template, args...)
+		os.Exit(1)
 	}
 }
 
 func (l Logger) Fatalw(msg string, fields log.Fields) {
 	if l.Level <= log.FatalLevel {
 		journal.Send(msg, journal.PriEmerg, handleFields(fields))
+		os.Exit(1)
 	}
 }
 func (l Logger) Panic(msg ...interface{}) {
 	if l.Level <= log.PanicLevel {
-		journal.Print(journal.PriEmerg, fmt.Sprintf("%v", msg...))
+		s := fmt.Sprint(msg...)
+		journal.Print(journal.PriEmerg, s)
+		panic(s)
 	}
 }
 
 func (l Logger) Panicf(template string, args ...interface{}) {
 	if l.Level <= log.PanicLevel {
-		journal.Print(journal.PriEmerg, template, args...)
+		s := fmt.Sprintf(template, args...)
+		journal.Print(journal.PriEmerg, s)
+		panic(s)
 	}
 }
 
 func (l Logger) Panicw(msg string, fields log.Fields) {
 	if l.Level <= log.PanicLevel {
 		journal.Send(msg, journal.PriEmerg, handleFields(fields))
+		panic(msg)
 	}
 }
 
