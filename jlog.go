@@ -9,10 +9,10 @@ import (
 )
 
 type Logger struct {
-	Level int
+	Level log.Level
 }
 
-func NewJournal(level int) *Logger {
+func NewJournal(level log.Level) *Logger {
 	return &Logger{
 		Level: level,
 	}
