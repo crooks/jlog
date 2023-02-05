@@ -7,4 +7,4 @@ require (
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf
 )
 
-replace github.com/coreos/go-systemd => github.com/coreos/go-systemd/v22 v22.3.2
+replace github.com/coreos/go-systemd => github.com/coreos/go-systemd/v22 v22.5.0
