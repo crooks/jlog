@@ -8,5 +8,3 @@ require (
 )
 
 replace github.com/coreos/go-systemd => github.com/coreos/go-systemd/v22 v22.3.2
-
-replace github.com/Masterminds/log-go => github.com/crooks/log-go v0.4.2
