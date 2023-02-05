@@ -113,21 +113,21 @@ func (l Logger) Errorw(msg string, fields log.Fields) {
 
 func (l Logger) Fatal(msg ...interface{}) {
 	if l.Level <= log.FatalLevel {
-		journal.Print(journal.PriEmerg, fmt.Sprintf("%v", msg...))
+		journal.Print(journal.PriErr, fmt.Sprintf("%v", msg...))
 		os.Exit(1)
 	}
 }
 
 func (l Logger) Fatalf(template string, args ...interface{}) {
 	if l.Level <= log.FatalLevel {
-		journal.Print(journal.PriEmerg, template, args...)
+		journal.Print(journal.PriErr, template, args...)
 		os.Exit(1)
 	}
 }
 
 func (l Logger) Fatalw(msg string, fields log.Fields) {
 	if l.Level <= log.FatalLevel {
-		journal.Send(msg, journal.PriEmerg, handleFields(fields))
+		journal.Send(msg, journal.PriErr, handleFields(fields))
 		os.Exit(1)
 	}
 }
