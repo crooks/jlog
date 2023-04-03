@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/Masterminds/log-go"
-	"github.com/coreos/go-systemd/journal"
+	"github.com/coreos/go-systemd/v22/journal"
 )
 
 type Logger struct {
